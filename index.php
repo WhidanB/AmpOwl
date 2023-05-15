@@ -1,11 +1,35 @@
 <?php
-require_once("connect.php");
+require("connect.php");
 
 $sql = "SELECT * FROM ampoules";
 $query = $db->prepare($sql);
 $query->execute();
 $result = $query->fetchAll(PDO::FETCH_ASSOC);
-require_once('close.php');
+require('close.php');
+
+if ($_POST) {
+    if (
+        isset($_POST['date_amp'])
+
+
+    ) {
+        print_r($_POST);
+        require('connect.php');
+        $date_amp = strip_tags($_POST['date_amp']);
+        $floor = $_POST['floor'];
+        $side = $_POST['side'];
+        $price = strip_tags($_POST['price']);
+        $sql = "INSERT INTO ampoules (date_amp, floor, side, price) VALUES (:date_amp, :floor, :side, :price)";
+        $query = $db->prepare($sql);
+        $query->bindValue(':date_amp', $date_amp);
+        $query->bindValue(':floor', $floor);
+        $query->bindValue(':side', $side);
+        $query->bindValue(':price', $price);
+        $query->execute();
+        require('close.php');
+        header("Location: index.php");
+    }
+}
 
 ?>
 
@@ -28,6 +52,51 @@ require_once('close.php');
 </head>
 
 <body>
+    <div class="overlay hidden"></div>
+    <div class="modal hidden">
+
+
+        <form method="post">
+            <div>
+                <label for="date_amp">Date de changement</label>
+                <input type="date" name="date_amp" required>
+                <div class="select">
+
+                    <label for="floor">Étage</label>
+                    <select name="floor" required>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                    <label for="side">Position</label>
+                    <select name="side" required>
+                        <option value="Nord">Nord</option>
+                        <option value="Sud">Sud</option>
+                        <option value="Est">Est</option>
+                        <option value="Ouest">Ouest</option>
+                    </select>
+                </div>
+                <div class="prix">
+
+                    <label for="price">Prix</label>
+                    <input type="text" name="price" required>
+                </div>
+
+            </div>
+            <input type="submit" value="Ajouter" class="sub">
+        </form>
+    </div>
+
+    <div class="suppr hidden">
+        <h3>Voulez-vous vraiment supprimer cette ampoule ?</h3>
+        <a href="delete.php?id=<?= $ampoule['id'] ?>">Supprimer</a>
+    </div>
 
     <header>
 
@@ -40,11 +109,14 @@ require_once('close.php');
 
     <main>
         <h1>Mes ampoules</h1>
-
+        <!-- <a href="add.php"> -->
         <div class="add">
-            <ion-icon name="add-circle"></ion-icon>
+            <img src="plus-circle.svg" height="30px" width="30px" alt="Bouton Plus">
             <h3>Ajouter une ampoule</h3>
         </div>
+        <!-- </a> -->
+
+        <h1>Ajouter une ampoule</h1>
 
         <table>
             <thead>
@@ -65,13 +137,15 @@ require_once('close.php');
 
                     <tr>
                         <td><?= $ampoule['id'] ?></td>
-                        <td><?= $ampoule['date'] ?></td>
+                        <td><?= $ampoule['date_amp'] ?></td>
                         <td><?= $ampoule['floor'] ?></td>
                         <td><?= $ampoule['side'] ?></td>
                         <td><?= $ampoule['price'] . ' ' . "€" ?></td>
                         <td>
-                            <a href="delete.php?id=<?= $ampoule['id'] ?>">Supprimer</a>
-                            <a href="edit.php?id=<?= $ampoule['id'] ?>">Modifier</a>
+                            <a href="edit.php?id=<?= $ampoule['id'] ?>">
+                                <img src="edition.png" alt=""></a>
+
+                            <img src="fermer.png" alt="">
                         </td>
                     </tr>
 
@@ -87,6 +161,7 @@ require_once('close.php');
 
 </body>
 
+<script src="index.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 

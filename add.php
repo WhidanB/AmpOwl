@@ -2,17 +2,22 @@
 
 if ($_POST) {
     if (
-        isset($_POST['first_name'])
-        && isset($_POST['last_name'])
+        isset($_POST['date_amp'])
+
+
     ) {
-        // print_r($_POST);
+        print_r($_POST);
         require_once('connect.php');
-        $first_name = strip_tags($_POST['first_name']);
-        $last_name = strip_tags($_POST['last_name']);
-        $sql = "INSERT INTO stagiaire (first_name, last_name) VALUES (:first_name, :last_name)";
+        $date_amp = strip_tags($_POST['date_amp']);
+        $floor = $_POST['floor'];
+        $side = $_POST['side'];
+        $price = strip_tags($_POST['price']);
+        $sql = "INSERT INTO ampoules (date_amp, floor, side, price) VALUES (:date_amp, :floor, :side, :price)";
         $query = $db->prepare($sql);
-        $query->bindValue(':first_name', $first_name, PDO::PARAM_STR_CHAR);
-        $query->bindValue(':last_name', $last_name, PDO::PARAM_STR_CHAR);
+        $query->bindValue(':date_amp', $date_amp);
+        $query->bindValue(':floor', $floor);
+        $query->bindValue(':side', $side);
+        $query->bindValue(':price', $price);
         $query->execute();
         require_once('close.php');
         header("Location: index.php");
@@ -33,16 +38,55 @@ if ($_POST) {
 </head>
 
 <body>
-    <h1>Ajouter un stagiaire</h1>
-    <form method="post">
-        <div>
-            <label for="first_name">First name</label>
-            <input type="text" name="first_name" required>
-            <label for="last_name">Last name</label>
-            <input type="text" name="last_name" required>
+    <header>
+
+        <div class="logo">
+            <img src="logo.png" alt="Une chouette, logo d'AmpOwl">
+            <h1>AmpOwl</h1>
         </div>
-        <input type="submit" value="send">
-    </form>
+
+    </header>
+
+    <main>
+
+
+        <h1>Ajouter une ampoule</h1>
+        <form method="post">
+            <div>
+                <label for="date_amp">Date de changement</label>
+                <input type="date" name="date_amp" required>
+                <div class="select">
+
+                    <label for="floor">Étage</label>
+                    <select name="floor" required>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                    <label for="side">Position</label>
+                    <select name="side" required>
+                        <option value="Nord">Nord</option>
+                        <option value="Sud">Sud</option>
+                        <option value="Est">Est</option>
+                        <option value="Ouest">Ouest</option>
+                    </select>
+                </div>
+                <div class="prix">
+
+                    <label for="price">Prix</label>
+                    <input type="text" name="price" required>
+                </div>
+
+            </div>
+            <input type="submit" value="Ajouter" class="sub">
+        </form>
+    </main>
 </body>
 
 </html>

@@ -4,7 +4,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     require_once("connect.php");
 
     $id = strip_tags($_GET['id']);
-    $sql = "SELECT * FROM stagiaire WHERE id = :id";
+    $sql = "SELECT * FROM ampoules WHERE id = :id";
     $query = $db->prepare($sql);
     $query->bindValue(':id', $id, PDO::PARAM_INT);
     $query->execute();
@@ -13,7 +13,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     if (!$result) {
         header('Location: index.php');
     }
-    $sql = "DELETE FROM stagiaire WHERE id = :id";
+    $sql = "DELETE FROM ampoules WHERE id = :id";
     $query = $db->prepare($sql);
     $query->bindValue(':id', $id, PDO::PARAM_INT);
     $query->execute();

@@ -8,7 +8,7 @@ if ($_POST) {
         $id = strip_tags($_POST['id']);
         $first_name = strip_tags($_POST['first_name']);
         $last_name = strip_tags($_POST['last_name']);
-        $sql = "UPDATE stagiaire SET first_name = :first_name, last_name = :last_name WHERE id = :id";
+        $sql = "UPDATE ampoules SET first_name = :first_name, last_name = :last_name WHERE id = :id";
         $query = $db->prepare($sql);
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->bindValue(':first_name', $first_name, PDO::PARAM_STR_CHAR);
@@ -25,7 +25,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     require_once("connect.php");
 
     $id = strip_tags($_GET['id']);
-    $sql = "SELECT * FROM stagiaire WHERE id = :id";
+    $sql = "SELECT * FROM ampoules WHERE id = :id";
     $query = $db->prepare($sql);
     $query->bindValue(':id', $id, PDO::PARAM_INT);
     $query->execute();
