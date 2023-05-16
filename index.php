@@ -5,7 +5,7 @@ $sql = "SELECT * FROM ampoules";
 $query = $db->prepare($sql);
 $query->execute();
 $result = $query->fetchAll(PDO::FETCH_ASSOC);
-require('close.php');
+
 
 if ($_POST) {
     if (
@@ -13,8 +13,7 @@ if ($_POST) {
 
 
     ) {
-        print_r($_POST);
-        require('connect.php');
+
         $date_amp = strip_tags($_POST['date_amp']);
         $floor = $_POST['floor'];
         $side = $_POST['side'];
@@ -26,10 +25,11 @@ if ($_POST) {
         $query->bindValue(':side', $side);
         $query->bindValue(':price', $price);
         $query->execute();
-        require('close.php');
+
         header("Location: index.php");
     }
 }
+
 
 ?>
 
@@ -52,10 +52,7 @@ if ($_POST) {
 </head>
 
 <body>
-    <div class="overlay hidden"></div>
     <div class="modal hidden">
-
-
         <form method="post">
             <div>
                 <label for="date_amp">Date de changement</label>
@@ -92,10 +89,12 @@ if ($_POST) {
             <input type="submit" value="Ajouter" class="sub">
         </form>
     </div>
+    <div class="overlay hidden"></div>
 
-    <div class="suppr hidden">
+    <div class="suppr hidden" id="supp">
+
         <h3>Voulez-vous vraiment supprimer cette ampoule ?</h3>
-        <a href="delete.php?id=<?= $ampoule['id'] ?>">Supprimer</a>
+        <a data-id="" class="confirmDel">Supprimer</a>
     </div>
 
     <header>
@@ -116,7 +115,6 @@ if ($_POST) {
         </div>
         <!-- </a> -->
 
-        <h1>Ajouter une ampoule</h1>
 
         <table>
             <thead>
@@ -144,8 +142,9 @@ if ($_POST) {
                         <td>
                             <a href="edit.php?id=<?= $ampoule['id'] ?>">
                                 <img src="edition.png" alt=""></a>
-
-                            <img src="fermer.png" alt="">
+                            <a data-id="<?= $ampoule['id'] ?>" class="cross">
+                                <img src="fermer.png" alt="">
+                            </a>
                         </td>
                     </tr>
 

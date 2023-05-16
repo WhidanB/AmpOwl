@@ -7,7 +7,7 @@ if ($_POST) {
 
     ) {
         print_r($_POST);
-        require_once('connect.php');
+        require('connect.php');
         $date_amp = strip_tags($_POST['date_amp']);
         $floor = $_POST['floor'];
         $side = $_POST['side'];
@@ -19,7 +19,7 @@ if ($_POST) {
         $query->bindValue(':side', $side);
         $query->bindValue(':price', $price);
         $query->execute();
-        require_once('close.php');
+        require('close.php');
         header("Location: index.php");
     }
 }

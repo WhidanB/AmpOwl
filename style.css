@@ -6,7 +6,8 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Bowlby One";
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 200;
   letter-spacing: 2px;
   position: relative;
   height: 100vh;
@@ -28,9 +29,6 @@ body {
   height: 100%;
 }
 
-h1 {
-}
-
 main {
   display: flex;
   flex-direction: column;
@@ -42,6 +40,7 @@ main {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .add h3 {
@@ -58,22 +57,33 @@ td {
 
 .overlay {
   position: absolute;
-  left: 0;
   top: 0;
-  height: 100vh;
-  width: 100vw;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
 }
 
 .modal {
   width: 50%;
-  height: 50%;
+  height: 500px;
   background-color: white;
   position: absolute;
   left: 25%;
   top: 25%;
-  z-index: 5;
+  z-index: 10;
+}
+
+.suppr {
+  width: 50%;
+  height: 500px;
+  background-color: white;
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  z-index: 10;
 }
 
 .hidden {
@@ -82,13 +92,6 @@ td {
 
 .affich {
   display: flex;
-}
-
-.suppr {
-  z-index: 5;
-}
-
-.modal {
 }
 
 form {
@@ -115,7 +118,9 @@ form div {
 .prix input {
   width: 40%;
 }
-
+.cross {
+  cursor: pointer;
+}
 .sub {
   width: 20%;
 }
