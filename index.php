@@ -100,7 +100,7 @@ if ($_POST) {
         <h3>Voulez-vous vraiment supprimer cette ampoule ?</h3>
         <div class="btn-sup-container">
             <a data-id="" class="confirmDel">Supprimer</a>
-            <a href="">Annuler</a>
+            <a class="cancel">Annuler</a>
         </div>
     </div>
 

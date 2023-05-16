@@ -125,6 +125,7 @@ svg {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  animation: slidein 0.3s ease-in;
 }
 
 .hidden {
@@ -177,6 +178,21 @@ form {
 }
 .sub {
   width: 20%;
+}
+.confirmDel {
+  cursor: pointer;
+  padding: 0.5rem;
+  color: white;
+  font-weight: 700;
+  background-color: #9c602e;
+  border: 1px solid black;
+}
+
+.cancel {
+  text-decoration: none;
+  color: black;
+  padding: 0.5rem;
+  border: 1px solid black;
 }
 
 .btn-sup-container {

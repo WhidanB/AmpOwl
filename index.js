@@ -4,6 +4,7 @@ const modal = document.querySelector(".modal");
 const suppr = document.querySelector(".suppr");
 const cross = document.querySelectorAll(".cross");
 const confirmDel = document.querySelector(".confirmDel");
+const cancel = document.querySelector(".cancel");
 console.log(cross);
 
 let id = null;
@@ -62,3 +63,5 @@ overlay.addEventListener("click", ModalClose);
 // cross.addEventListener("click", crossAttr);
 
 confirmDel.addEventListener("click", confirmDelAttr);
+
+cancel.addEventListener("click", ModalClose);
