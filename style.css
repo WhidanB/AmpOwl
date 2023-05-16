@@ -8,8 +8,8 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "rainbow";
-  font-weight: 200;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 400;
   letter-spacing: 2px;
   position: relative;
   height: 100vh;
@@ -19,11 +19,12 @@ body {
 .logo {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   gap: 20px;
   height: 100px;
   width: 100%;
+  font-family: "rainbow";
   font-size: 32px;
 }
 
@@ -35,6 +36,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .add {
@@ -53,7 +55,6 @@ table {
   border-collapse: collapse;
 }
 th {
-  font-weight: 200;
   border: 1px solid black;
   padding: 10px;
 }

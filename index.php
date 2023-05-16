@@ -47,7 +47,7 @@ if ($_POST) {
     <link rel="shortcut icon" href="logo.png" type="image/png" sizes="32x32">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Bowlby+One+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
     <title>Bienvenue sur AmpOwl !</title>
 </head>
 
@@ -174,6 +174,10 @@ if ($_POST) {
         </table>
 
     </main>
+
+    <footer>
+
+    </footer>
 
 </body>
 
