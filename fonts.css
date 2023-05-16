@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "snowy";
+  src: url("snowyowlregular-4bynd-webfont.woff2") format("woff2"),
+    local("snowyowlregular-4bynd-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "rainbow";
+  src: local("rainbow_season-webfont.woff2"),
+    local("rainbow_season-webfont.woff");
+}

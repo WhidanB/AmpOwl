@@ -1,3 +1,5 @@
+@import url(fonts.css);
+
 * {
   /* border: 1px red solid; */
 }
@@ -6,7 +8,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "rainbow";
   font-weight: 200;
   letter-spacing: 2px;
   position: relative;
@@ -41,18 +43,29 @@ main {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  gap: 10px;
 }
 
 .add h3 {
   font-weight: 100;
 }
-
+table {
+  border-collapse: collapse;
+}
 th {
   font-weight: 200;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 td {
   text-align: center;
+  border: 1px solid black;
+}
+
+svg {
+  text-decoration: none;
+  color: black;
 }
 
 .overlay {
@@ -64,26 +77,53 @@ td {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
   z-index: 5;
+  animation: opacity 0.5s ease-in;
 }
 
 .modal {
-  width: 50%;
+  width: 35%;
   height: 500px;
   background-color: white;
   position: absolute;
-  left: 25%;
-  top: 25%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  left: 32.5%;
+  top: 10%;
   z-index: 10;
+  animation: slidein 0.3s ease-in;
+}
+
+@keyframes slidein {
+  0% {
+    top: -50%;
+  }
+
+  100% {
+    top: 10%;
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
 }
 
 .suppr {
-  width: 50%;
-  height: 500px;
+  width: 35%;
+  height: 200px;
   background-color: white;
   position: absolute;
-  left: 25%;
-  top: 25%;
+  left: 32.5%;
+  top: 10%;
   z-index: 10;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .hidden {
@@ -98,21 +138,34 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
+  height: 50%;
 }
-
-form div {
+.form_container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 100%;
+}
+
+.select {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .select {
   display: flex;
   flex-flow: row nowrap;
+  vertical-align: top;
 }
 .prix {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
 }
 
 .prix input {
@@ -123,4 +176,11 @@ form div {
 }
 .sub {
   width: 20%;
+}
+
+.btn-sup-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
