@@ -5,6 +5,7 @@ $sql = "SELECT * FROM ampoules";
 $query = $db->prepare($sql);
 $query->execute();
 $result = $query->fetchAll(PDO::FETCH_ASSOC);
+// header('Location: index.php?id=12');
 
 
 if ($_POST) {
@@ -27,6 +28,28 @@ if ($_POST) {
         $query->execute();
 
         header("Location: index.php");
+    }
+    if (
+        isset($_POST['date_amp1'])
+    ) {
+        require("connect.php");
+        $id1 = $_POST['id1'];
+        $date_amp1 = $_POST['date_amp1'];
+        $floor1 = $_POST['floor1'];
+        $side1 = $_POST['side1'];
+        $price1 = $_POST['price1'];
+        $sql = "UPDATE ampoules SET date_amp = :date_amp1, floor = :floor1, side = :side1, price = :price1  WHERE id = :id1";
+        $query = $db->prepare($sql);
+        $query->bindValue(':id1', $id1, PDO::PARAM_INT);
+        $query->bindValue(':date_amp1', $date_amp1);
+        $query->bindValue(':floor1', $floor1);
+        $query->bindValue(':side1', $side1);
+        $query->bindValue(':price1', $price1);
+
+        $query->execute();
+        $modif = $query->fetch();
+        require('close.php');
+        header('Location: index.php');
     }
 }
 
@@ -104,6 +127,67 @@ if ($_POST) {
         </div>
     </div>
 
+    <div class="edit hidden">
+        <?php
+        $_GET["id"];
+        if (isset($_GET['id']) && !empty($_GET['id'])) {
+            require_once("connect.php");
+
+            $id = strip_tags($_GET['id']);
+            $sql = "SELECT * FROM ampoules WHERE id = :id";
+            $query = $db->prepare($sql);
+            $query->bindValue(':id', $id, PDO::PARAM_INT);
+            $query->execute();
+            $stp = $query->fetch();
+            require_once('close.php');
+        }
+
+        ?>
+
+        <h1>Modifier une ampoule</h1>
+        <form method="post">
+            <div class="form_container">
+
+                <input type="hidden" value="<?= $stp['id'] ?>" name="id1" required>
+
+                <div class="date">
+                    <label for="date_amp1">Date de changement</label>
+
+                    <input type="date" name="date_amp1" value="<?= $stp['date_amp'] ?>" required>
+                </div>
+                <div class="select">
+
+                    <label for="floor1">Étage</label>
+                    <select name="floor1" value="<?= $stp['floor'] ?>" required>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                    <label for="side1">Position</label>
+                    <select name="side1" value="<?= $stp['side'] ?>" required>
+                        <option value="Nord">Nord</option>
+                        <option value="Sud">Sud</option>
+                        <option value="Est">Est</option>
+                        <option value="Ouest">Ouest</option>
+                    </select>
+                </div>
+                <div class="prix">
+
+                    <label for="price1">Prix</label>
+                    <input type="text" name="price1" value="<?= $stp['price'] ?>" required>
+                </div>
+
+            </div>
+            <input type="submit" value="Modifier" class="sub">
+        </form>
+    </div>
+
     <header>
 
         <div class="logo">
@@ -151,7 +235,7 @@ if ($_POST) {
                         <td><?= $ampoule['side'] ?></td>
                         <td><?= $ampoule['price'] . ' ' . "€" ?></td>
                         <td>
-                            <a href="edit.php?id=<?= $ampoule['id'] ?>">
+                            <a data-id="<?= $ampoule['id'] ?>" class="modif">
                                 <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>

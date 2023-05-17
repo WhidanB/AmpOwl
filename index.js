@@ -37,6 +37,7 @@ cross.forEach((opmod) =>
 modif.forEach((mod) =>
   mod.addEventListener("click", () => {
     console.log("click cross");
+    id = mod.getAttribute("data-id");
     // id = mod.getAttribute("data-id");
     editModalOpen();
   })
@@ -48,6 +49,7 @@ function editModalOpen() {
   overlay.classList.remove("hidden");
   edit.classList.remove("hidden");
   edit.classList.add("affich");
+  window.location.assign("index.php?id=" + id);
 }
 
 function supprModalOPen() {
