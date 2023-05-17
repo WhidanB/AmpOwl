@@ -5,6 +5,11 @@ const suppr = document.querySelector(".suppr");
 const cross = document.querySelectorAll(".cross");
 const confirmDel = document.querySelector(".confirmDel");
 const cancel = document.querySelector(".cancel");
+const modif = document.querySelectorAll(".modif");
+const edit = document.querySelector(".edit");
+const confirmEdit = document.querySelector(".confirmEdit");
+console.log(modif);
+console.log(edit);
 console.log(cross);
 
 let id = null;
@@ -16,7 +21,6 @@ function addModalOpen() {
 }
 
 function ModalClose() {
-  console.log("click");
   overlay.classList.add("hidden");
   overlay.classList.remove("affich");
   modal.classList.remove("affich");
@@ -26,11 +30,25 @@ function ModalClose() {
 }
 cross.forEach((opmod) =>
   opmod.addEventListener("click", () => {
-    console.log("click cross");
     id = opmod.getAttribute("data-id");
     supprModalOPen();
   })
 );
+modif.forEach((mod) =>
+  mod.addEventListener("click", () => {
+    console.log("click cross");
+    // id = mod.getAttribute("data-id");
+    editModalOpen();
+  })
+);
+
+function editModalOpen() {
+  console.log("connard");
+  overlay.classList.add("affich");
+  overlay.classList.remove("hidden");
+  edit.classList.remove("hidden");
+  edit.classList.add("affich");
+}
 
 function supprModalOPen() {
   overlay.classList.add("affich");
@@ -52,6 +70,11 @@ function crossAttr() {
 
 function confirmDelAttr() {
   window.location.replace("delete.php?id=" + id);
+}
+
+function modifAttr() {
+  var id = cross.getAttribute("data-id");
+  confirmDel.setAttribute("data-id", id);
 }
 
 add.addEventListener("click", addModalOpen);
