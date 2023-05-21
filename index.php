@@ -235,6 +235,7 @@ if ($_POST) {
                         <td><?= $ampoule['side'] ?></td>
                         <td><?= $ampoule['price'] . ' ' . "€" ?></td>
                         <td>
+
                             <a data-id="<?= $ampoule['id'] ?>" class="modif">
                                 <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
@@ -244,6 +245,22 @@ if ($_POST) {
                                 <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M18 6 6 18"></path>
                                     <path d="m6 6 12 12"></path>
+                                </svg>
+                            </a>
+                        </td>
+                        <td class="cache">
+                            <a data-id="<?= $ampoule['id'] ?>" class="inject">
+                                <svg class="invis" width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="16" height="16" x="4" y="4" rx="2" ry="2"></rect>
+                                    <path d="M9 9h6v6H9z"></path>
+                                    <path d="M9 1v3"></path>
+                                    <path d="M15 1v3"></path>
+                                    <path d="M9 20v3"></path>
+                                    <path d="M15 20v3"></path>
+                                    <path d="M20 9h3"></path>
+                                    <path d="M20 14h3"></path>
+                                    <path d="M1 9h3"></path>
+                                    <path d="M1 14h3"></path>
                                 </svg>
                             </a>
                         </td>

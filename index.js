@@ -8,9 +8,7 @@ const cancel = document.querySelector(".cancel");
 const modif = document.querySelectorAll(".modif");
 const edit = document.querySelector(".edit");
 const confirmEdit = document.querySelector(".confirmEdit");
-console.log(modif);
-console.log(edit);
-console.log(cross);
+const inject = document.querySelectorAll(".inject");
 
 let id = null;
 function addModalOpen() {
@@ -27,6 +25,8 @@ function ModalClose() {
   modal.classList.add("hidden");
   suppr.classList.remove("affich");
   suppr.classList.add("hidden");
+  edit.classList.remove("affich");
+  edit.classList.add("hidden");
 }
 cross.forEach((opmod) =>
   opmod.addEventListener("click", () => {
@@ -34,11 +34,17 @@ cross.forEach((opmod) =>
     supprModalOPen();
   })
 );
-modif.forEach((mod) =>
+inject.forEach((mod) =>
   mod.addEventListener("click", () => {
     console.log("click cross");
     id = mod.getAttribute("data-id");
-    // id = mod.getAttribute("data-id");
+    window.location.replace("index.php?id=" + id);
+  })
+);
+
+modif.forEach((ilmod) =>
+  ilmod.addEventListener("click", () => {
+    console.log("click cross");
     editModalOpen();
   })
 );
@@ -49,7 +55,6 @@ function editModalOpen() {
   overlay.classList.remove("hidden");
   edit.classList.remove("hidden");
   edit.classList.add("affich");
-  window.location.assign("index.php?id=" + id);
 }
 
 function supprModalOPen() {

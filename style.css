@@ -144,6 +144,15 @@ svg {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  animation: slidein 0.3s ease-in;
+}
+
+.cache {
+  border: none;
+}
+
+.invis {
+  color: rgba(0, 0, 0, 0);
 }
 
 .edit h1 {
@@ -196,6 +205,10 @@ form {
   width: 40%;
 }
 .cross {
+  cursor: pointer;
+}
+
+.modif {
   cursor: pointer;
 }
 .sub {
