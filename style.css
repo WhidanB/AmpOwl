@@ -87,6 +87,18 @@ svg {
   animation: opacity 0.5s ease-in;
 }
 
+.overlay2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+  animation: opacity 0.5s ease-in;
+}
+
 .modal {
   width: 35%;
   height: 500px;
