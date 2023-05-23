@@ -2,6 +2,10 @@
 
 session_start();
 
+if (isset($_SESSION["user"])) {
+    header("Location: index.php");
+}
+
 if (!empty($_POST)) {
     if (isset($_POST["user_name"], $_POST["user_mail"], $_POST["pass"]) && !empty($_POST["user_name"]) && !empty($_POST["user_mail"]) && !empty($_POST["pass"])) {
 
