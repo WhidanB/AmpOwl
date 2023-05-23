@@ -442,3 +442,65 @@ input:valid ~ label {
     margin-left: -100%;
   }
 }
+
+@media screen and (max-width: 375px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  main {
+    height: 70%;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    gap: 5px;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+  .logo h1 {
+    font-size: 42px;
+  }
+
+  .perso {
+    padding-right: 10px;
+    align-items: center;
+  }
+
+  .perso_container {
+    padding: 0;
+    border: none;
+  }
+
+  .form-box {
+    width: 90vw;
+  }
+
+  table {
+    max-width: 90vw;
+  }
+
+  th {
+    padding: 0;
+  }
+
+  .modal {
+    text-align: center;
+    left: 5vw;
+    width: 90vw;
+  }
+  .edit {
+    text-align: center;
+    left: 5vw;
+    width: 90vw;
+  }
+  .suppr {
+    text-align: center;
+    left: 5vw;
+    width: 90vw;
+  }
+}
