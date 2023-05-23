@@ -12,8 +12,13 @@ body {
   font-weight: 400;
   letter-spacing: 2px;
   position: relative;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .logo {
@@ -26,6 +31,7 @@ body {
   width: 100%;
   font-family: "Quicksand";
   font-size: 48px;
+  grid-column: 2/3;
 }
 
 .logo img {
@@ -35,6 +41,45 @@ body {
 .logo h1 {
   margin: 0;
   text-align: center;
+}
+
+.perso {
+  grid-column: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding-right: 200px;
+  gap: 10px;
+}
+.perso p {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+
+.perso_container {
+  border: #9c602e 1px solid;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.perso_container:hover {
+  background-color: #9c602e;
+  color: white;
+}
+
+.perso_container svg:hover {
+  color: white;
+}
+
+.disco a {
+  color: black;
+  font-weight: 700;
 }
 
 main {
@@ -106,7 +151,7 @@ svg {
   position: absolute;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   left: 32.5%;
   top: 10%;
   z-index: 10;
@@ -156,7 +201,7 @@ svg {
   z-index: 10;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   animation: slidein 0.3s ease-in;
 }
 
@@ -267,7 +312,6 @@ form {
   width: 30vw;
   background: transparent;
   border: 2px solid black;
-  border-radius: 20px;
   backdrop-filter: blur(15px);
   display: flex;
   justify-content: center;
@@ -361,4 +405,11 @@ input:valid ~ label {
 }
 .register p a:hover {
   text-decoration: underline;
+}
+
+.toast {
+  position: absolute;
+  bottom: 50px;
+  background-color: #9c602e;
+  padding: 0 20px;
 }

@@ -1,6 +1,13 @@
 <?php
 session_start();
 
+if (!isset($_SESSION["user"])) {
+    header("Location: login.php");
+}
+
+
+
+
 require("connect.php");
 $sql = "SELECT * FROM ampoules";
 $query = $db->prepare($sql);
@@ -206,6 +213,19 @@ if ($_POST) {
             <img src="logo.png" alt="Une chouette, logo d'AmpOwl">
             <h1>AmpOwl</h1>
         </div>
+        <div class="perso">
+            <div class="perso_container">
+
+                <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <path d="M12 3a4 4 0 1 0 0 8 4 4 0 1 0 0-8z"></path>
+                </svg>
+                <p><?= $_SESSION["user"]["pseudo"] ?></p>
+            </div>
+            <div class="disco">
+                <a href="disconnect.php">Déconnexion</a>
+            </div>
+        </div>
 
     </header>
 
@@ -225,7 +245,6 @@ if ($_POST) {
 
         <table>
             <thead>
-                <th>Numéro</th>
                 <th>Date du changement</th>
                 <th>Étage</th>
                 <th>Position</th>
@@ -241,7 +260,6 @@ if ($_POST) {
                 ?>
 
                     <tr>
-                        <td><?= $ampoule['id'] ?></td>
                         <td><?= $ampoule['date_amp'] ?></td>
                         <td><?= $ampoule['floor'] ?></td>
                         <td><?= $ampoule['side'] ?></td>
@@ -269,6 +287,21 @@ if ($_POST) {
             </tbody>
 
         </table>
+
+        <div class="toast hidden">
+            <h1>Suppression confirmée</h1>
+        </div>
+        <?php
+        if (isset($_SESSION["Delete"]["on"])) {
+
+            if ($_SESSION["Delete"]["on"] == 1) {
+
+                echo '<script type="text/javascript" src="toast.js">
+                </script>';
+            }
+            unset($_SESSION["Delete"]["on"]);
+        }
+        ?>
 
     </main>
 
