@@ -289,7 +289,7 @@ if ($_POST) {
         </table>
 
         <div class="toast hidden">
-            <h1>Suppression confirmée</h1>
+            <h3>Suppression confirmée</h3>
         </div>
         <?php
         if (isset($_SESSION["Delete"]["on"])) {

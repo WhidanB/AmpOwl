@@ -408,8 +408,37 @@ input:valid ~ label {
 }
 
 .toast {
+  opacity: 0;
   position: absolute;
   bottom: 50px;
   background-color: #9c602e;
   padding: 0 20px;
+  animation: toast 3s 1;
+}
+
+.toast::after {
+  opacity: 0;
+}
+
+.toast h3 {
+  color: white;
+}
+
+@keyframes toast {
+  0% {
+    opacity: 0%;
+    margin-left: 100%;
+  }
+  25% {
+    opacity: 100%;
+    margin-left: 0;
+  }
+  75% {
+    opacity: 100%;
+    margin-left: 0;
+  }
+  100% {
+    opacity: 0%;
+    margin-left: -100%;
+  }
 }
