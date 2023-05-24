@@ -442,8 +442,36 @@ input:valid ~ label {
     margin-left: -100%;
   }
 }
+/* @media screen and (max-width: 375px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
-@media screen and (max-width: 375px) {
+  main {
+    height: 70%;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    gap: 5px;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+  .logo h1 {
+    font-size: 42px;
+  }
+
+  .perso {
+    padding-right: 10px;
+    align-items: center;
+  }
+} */
+
+@media screen and (min-width: 200px) and (max-width: 600px) {
   header {
     display: flex;
     flex-direction: column;
@@ -502,5 +530,26 @@ input:valid ~ label {
     text-align: center;
     left: 5vw;
     width: 90vw;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 820px) {
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .logo {
+    justify-content: flex-start;
+    padding-left: 10px;
+  }
+
+  .logo h1 {
+    font-size: 42px;
+  }
+  .perso {
+    padding-right: 10px;
+    align-items: center;
   }
 }
