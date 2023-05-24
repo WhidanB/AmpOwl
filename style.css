@@ -73,7 +73,7 @@ header {
   color: white;
 }
 
-.perso_container svg:hover {
+.perso_container:hover svg {
   color: white;
 }
 
