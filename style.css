@@ -471,7 +471,74 @@ input:valid ~ label {
   }
 } */
 
-@media screen and (min-width: 200px) and (max-width: 600px) {
+@media screen and (min-width: 200px) and (max-width: 500px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  main {
+    height: 70%;
+    justify-content: flex-start;
+    text-align: center;
+  }
+
+  .logo {
+    gap: 5px;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+  .logo h1 {
+    font-size: 42px;
+  }
+
+  .perso {
+    padding-right: 10px;
+    align-items: center;
+  }
+
+  .perso_container {
+    padding: 0;
+    border: none;
+  }
+
+  .form-box {
+    width: 90vw;
+  }
+
+  .inputbox {
+    width: 90%;
+  }
+
+  table {
+    max-width: 90vw;
+  }
+
+  th {
+    padding: 0;
+  }
+
+  .modal {
+    text-align: center;
+    left: 5vw;
+    width: 90vw;
+  }
+  .edit {
+    text-align: center;
+    left: 5vw;
+    width: 90vw;
+  }
+  .suppr {
+    text-align: center;
+    left: 5vw;
+    width: 90vw;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 821px) {
   header {
     display: flex;
     flex-direction: column;
@@ -505,7 +572,7 @@ input:valid ~ label {
   }
 
   .form-box {
-    width: 90vw;
+    width: 475px;
   }
 
   table {
@@ -532,24 +599,57 @@ input:valid ~ label {
     width: 90vw;
   }
 }
-
-@media screen and (min-width: 600px) and (max-width: 820px) {
-  header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+@media screen and (min-width: 822px) and (max-width: 900px) {
+  main {
+    height: 70%;
+    justify-content: center;
   }
 
-  .logo {
-    justify-content: flex-start;
-    padding-left: 10px;
-  }
-
-  .logo h1 {
-    font-size: 42px;
-  }
   .perso {
     padding-right: 10px;
     align-items: center;
+  }
+
+  .perso_container {
+    padding: 0;
+    border: none;
+  }
+
+  .form-box {
+    width: 475px;
+  }
+
+  table {
+    max-width: 90vw;
+  }
+
+  th {
+    padding: 0;
+  }
+
+  .modal {
+    text-align: center;
+    left: 5vw;
+    width: 90vw;
+  }
+  .edit {
+    text-align: center;
+    left: 5vw;
+    width: 90vw;
+  }
+  .suppr {
+    text-align: center;
+    left: 5vw;
+    width: 90vw;
+  }
+}
+@media screen and (min-width: 900px) {
+  main {
+    height: 70%;
+    justify-content: center;
+  }
+
+  .form-box {
+    width: 475px;
   }
 }
