@@ -91,6 +91,7 @@ if ($_POST) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Bienvenue sur AmpOwl !</title>
 </head>
 
@@ -137,12 +138,9 @@ if ($_POST) {
         </form>
     </div>
     <div class="overlay hidden"></div>
-    <div class="overlay2 hidden"></div>
+    <div class="overlay2 hidden" id="overlay2"></div>
 
     <div class="suppr hidden" id="supp">
-
-
-
         <h3>Voulez-vous vraiment supprimer cette ampoule ?</h3>
         <div class="btn-sup-container">
             <a data-id="" class="confirmDel">Supprimer</a>
@@ -150,62 +148,53 @@ if ($_POST) {
         </div>
     </div>
 
-    <div class="edit hidden">
-        <?php
 
+    <div id="myModal" class="edit hidden">
 
+        <h2>Modifier une ampoule</h2>
+        <form id="editForm">
+            <input type="hidden" id="editId" name="id" value="">
+            <div class="date">
 
-        ?>
-
-        <h1>Modifier une ampoule</h1>
-        <form method="post">
-            <div class="form_container">
-
-                <input type="hidden" value="<?= $stp['id'] ?>" name="id1" required>
-
-                <div class="date">
-                    <label for="date_amp1">Date de changement</label>
-
-                    <input type="date" name="date_amp1" value="<?= $stp['date_amp'] ?>" required>
-                </div>
-                <div class="select">
-
-                    <label for="floor1">Étage</label>
-                    <select name="floor1" value="<?= $stp['floor'] ?>" required>
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                    </select>
-                    <label for="side1">Position</label>
-                    <select name="side1" value="<?= $stp['side'] ?>" required>
-                        <option value="Nord">Nord</option>
-                        <option value="Sud">Sud</option>
-                        <option value="Est">Est</option>
-                        <option value="Ouest">Ouest</option>
-                    </select>
-                </div>
-                <div class="prix">
-
-                    <label for="price1">Prix</label>
-                    <input type="text" name="price1" value="<?= $stp['price'] ?>" required>
-                </div>
-
+                <label for="editDate">Date du changement:</label>
+                <input type="date" id="editDate" name="date_amp" required>
             </div>
+            <div class="select">
+
+                <label for="editFloor">Étage:</label>
+                <select name="floor" id="editFloor" required>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
+
+                <label for="editSide">Position:</label>
+                <select name="side" id="editSide" required>
+                    <option value="Nord">Nord</option>
+                    <option value="Sud">Sud</option>
+                    <option value="Est">Est</option>
+                    <option value="Ouest">Ouest</option>
+                </select>
+            </div>
+<div class="prix">
+
+    <label for="editPrice">Prix:</label>
+    <input type="text" id="editPrice" name="price" required>
+</div>
+
             <input type="submit" value="Modifier" class="sub">
         </form>
+
     </div>
-    <?php
-    if (!empty($_GET["id"])) {
-        echo '<script type="text/javascript" src="editModalOpen.js">
-    </script>';
-    }
-    ?>
+
+
+
 
     <header>
 
@@ -252,7 +241,7 @@ if ($_POST) {
                 <th>Actions</th>
             </thead>
 
-            <tbody>
+            <tbody id="tableBody">
                 <?php
                 //pour chaque résultat de $result, on affiche une ligne dans le tableau
                 foreach ($result as $ampoule) {
@@ -266,7 +255,7 @@ if ($_POST) {
                         <td><?= $ampoule['price'] . ' ' . "€" ?></td>
                         <td>
 
-                            <a href="edit.php?id=<?= $ampoule['id'] ?>" data-id="<?= $ampoule['id'] ?>" class="modif">
+                            <a href="#" data-id="<?= $ampoule['id'] ?>" class="modif">
                                 <svg width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
@@ -312,6 +301,8 @@ if ($_POST) {
 </body>
 
 <script src="index.js"></script>
+<script src="script.js"></script>
+<script src="editModalClose.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 

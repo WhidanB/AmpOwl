@@ -59,6 +59,8 @@ function modifAttr() {
   confirmDel.setAttribute("data-id", id);
 }
 
+
+
 add.addEventListener("click", addModalOpen);
 
 // cross.addEventListener("click", supprModalOPen);
