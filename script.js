@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  // Gestionnaire d'événements pour le lien "Modifier"
+
   $(".modif").click(function (event) {
     event.preventDefault();
     var id = $(this).data("id");
@@ -27,7 +27,7 @@ $(document).ready(function () {
     });
   });
 
-  // Gestionnaire d'événements pour le formulaire de modification
+
   $("#editForm").submit(function (event) {
     event.preventDefault();
     var formData = $(this).serialize();
@@ -101,8 +101,8 @@ $('.confirmDel').click(function(event) {
 
     // Envoyer la requête de suppression
     $.ajax({
-        type: "GET", // Utilisez la méthode GET pour la suppression
-        url: "delete.php?id=" + id, // Utilisez le fichier delete.php
+        type: "GET", 
+        url: "delete.php?id=" + id,
         success: function(response) {
             var result = JSON.parse(response);
             if (result.success) {
